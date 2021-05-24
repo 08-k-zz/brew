@@ -1,5 +1,8 @@
-# Deps
+# Dependencies
 node_modules
+
+# React distribution
+dist
 
 # Err logs
 yarn-error.log
