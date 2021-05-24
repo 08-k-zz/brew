@@ -1,5 +1,5 @@
 # The BREW stack
-BREW has the goal of creating a simple, yet scalable entry point for fullstack javascript applications using the react framework.
+BREW has the goal of creating a simple, yet scalable entry point for fullstack JavaScript applications using the react framework.
 This is a project built from Open Source parts that built up our framework from the server to the browser.
 * **B**abel - a JavaScript compiler - used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments
 * **R**eact - a JavaScript library - used for building user interfaces
