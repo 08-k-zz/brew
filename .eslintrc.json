@@ -3,11 +3,15 @@
     "node": true,
     "jest": true
   },
-  "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:security/recommended", "plugin:prettier/recommended"],
-  "plugins": ["jest", "security", "prettier"],
+  "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:security/recommended", "plugin:prettier/recommended", "plugin:react/recommended"],
+  "plugins": ["jest", "security", "prettier", "react"],
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
   },
+  "parser": "babel-eslint",
   "rules": {
     "no-console": "error",
     "func-names": "off",
