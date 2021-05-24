@@ -13,7 +13,7 @@ This is a project built from Open Source parts that built up our framework from 
 ```
 git clone https://github.com/kafo8/brew.git
 cd brew
-yarn && yarn dev (for development)
+yarn && yarn dev #for development
 ```
 ## Credits
 * The BREW name was inspired by Linnovate's "MEAN"
