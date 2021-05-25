@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "app",
-      "script": "server/index.js",
+      "script": "api/index.js",
       "instances": 1,
       "autorestart": true,
       "watch": false,
