@@ -1,50 +1,71 @@
-const Path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
-module.exports = {
-  entry: {
-    app: Path.resolve(__dirname, '../src/index.js'),
-  },
-  output: {
-    path: Path.join(__dirname, '../dist'),
-    filename: 'js/[name].js',
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      name: false,
+module.exports = options => ({
+  mode: options.mode,
+  entry: options.entry,
+  output: Object.assign(
+    {
+      path: path.resolve(process.cwd(), 'dist'),
+      publicPath: '/',
     },
-  },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({ patterns: [{ from: Path.resolve(__dirname, '../public'), to: 'public' }] }),
-    new HtmlWebpackPlugin({
-      template: Path.resolve(__dirname, '../public/index.html'),
-    }),
-  ],
-  resolve: {
-    alias: {
-      '~': Path.resolve(__dirname, '../src'),
-    },
-  },
+    options.output,
+  ),
   module: {
     rules: [
       {
-        test: /\.mjs$/,
-        include: /node_modules/,
-        type: 'javascript/auto',
+        test: /\.jsx?$/, // Transform all .js and .jsx files required somewhere with Babel
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: options.babelQuery,
+        },
       },
       {
-        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
+        test: /\.s?css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(eot|otf|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.(ico)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10 * 1024,
+              noquotes: true,
+            },
           },
-        },
+        ],
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader',
       },
     ],
   },
-};
+  plugins: options.plugins.concat([
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+    }),
+  ]),
+  resolve: {
+    modules: ['node_modules', 'app'],
+    extensions: ['.js', '.jsx'],
+    mainFields: ['browser', 'main'],
+  },
+  devtool: options.devtool,
+  target: 'web',
+  performance: options.performance || {},
+});

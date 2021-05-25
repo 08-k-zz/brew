@@ -1,36 +1,65 @@
-const Webpack = require('webpack');
-const { merge } = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const common = require('./webpack.common.js');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { HashedModuleIdsPlugin } = require('webpack');
 
-module.exports = merge(common, {
+module.exports = require('./webpack.base.babel')({
   mode: 'production',
-  devtool: 'source-map',
-  stats: 'errors-only',
-  bail: true,
+  entry: [
+    require.resolve('react-app-polyfill/ie11'),
+    path.join(process.cwd(), 'app/app.js'),
+  ],
   output: {
-    filename: 'js/[name].[chunkhash:8].js',
-    chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].chunk.js',
+  },
+  optimization: {
+    minimize: true,
+    nodeEnv: 'production',
+    sideEffects: true,
+    concatenateModules: true,
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: 10,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/,
+            )[1];
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    },
   },
   plugins: [
-    new Webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+    new HtmlWebpackPlugin({
+      template: 'app/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+      inject: true,
     }),
-    new MiniCssExtractPlugin({
-      filename: 'bundle.css',
+    new HashedModuleIdsPlugin({
+      hashFunction: 'sha256',
+      hashDigest: 'hex',
+      hashDigestLength: 20,
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-      {
-        test: /\.s?css/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
-      },
-    ],
+  performance: {
+    assetFilter: assetFilename =>
+      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
 });
