@@ -9,19 +9,37 @@ const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
+const favicon = require('serve-favicon');
+
 
 const app = express();
-const distDir = path.join(__dirname, '../dist');
-const htmlFile = path.join(distDir, 'index.html');
+const DIST_DIR = path.join(__dirname, '../dist');
+const HTML_FILE = path.join(DIST_DIR, 'index.html');
 
 if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
-app.use(express.static(distDir));
-app.get('/', (req, res) => {
-  res.sendFile(htmlFile);
-});
+app.use(express.static(DIST_DIR));
+
+app.get('/', function(req, res) {
+  res.sendFile(HTML_FILE);
+})
+app.get('/about', function(req, res) {
+  res.sendFile(HTML_FILE);
+})
+app.get('/dashboard', function(req, res) {
+  res.sendFile(HTML_FILE);
+})
+app.get('/api/home', function(req, res) {
+  res.json("Hello World!");
+})
+app.get('/api/about', function(req, res) {
+  res.json("Hello World!");
+})
+app.get('/api/dashboard', function(req, res) {
+  res.json("Hello World!");
+})
 
 app.use(helmet());
 

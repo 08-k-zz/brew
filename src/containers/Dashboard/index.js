@@ -11,9 +11,9 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-export default function Home() {
+export default function Dashboard() {
   useEffect(() => {
-    axios.get('/api/home')
+    axios.get('/api/dashboard')
       .then(res => setState(res.data))
   }, [])
 
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <Container>
-      <h2>Home</h2>
+      <h2>Dashboard</h2>
       {state}
     </Container>
   )
