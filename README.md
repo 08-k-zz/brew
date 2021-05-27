@@ -18,7 +18,6 @@ yarn && yarn dev #for development
 ## Credits
 * BREW by Koji
 * The BREW name was inspired by Linnovate's "MEAN"
-* Overall inspired by the "MEAN" project
 [Linnovate's "MEAN"](https://github.com/linnovate/mean)
 
 Copyright © 2021 Koji
