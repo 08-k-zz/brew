@@ -1,6 +1,6 @@
 {
   "name": "brew",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "BREW, An open-source project using Babel, React, Express, and Webpack.",
   "author": "Koji#4278",
   "license": "MIT",
