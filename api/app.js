@@ -9,7 +9,6 @@ const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
-const favicon = require('serve-favicon');
 
 
 const app = express();
