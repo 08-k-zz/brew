@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import Home from '../Home';
 import About from '../About';
 import Dashboard from '../Dashboard';
+
 import GlobalStyle from '../../global-style';
 
 const Container = styled.div`
