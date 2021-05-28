@@ -20,5 +20,5 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  MOUNT_NODE,
+  MOUNT_NODE
 );
