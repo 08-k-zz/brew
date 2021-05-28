@@ -4,7 +4,7 @@ node_modules
 # React distribution
 dist
 
-# Err logs
+# Error logs
 yarn-error.log
 
 # Coverage
