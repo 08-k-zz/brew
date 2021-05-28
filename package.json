@@ -17,6 +17,7 @@
     "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "prepare": "husky install",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js"
   },
@@ -85,6 +86,7 @@
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
+    "husky": "^6.0.0",
     "jest": "^27.0.1",
     "lint-staged": "^11.0.0",
     "node-mocks-http": "^1.10.1",
