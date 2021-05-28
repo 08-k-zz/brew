@@ -1,5 +1,5 @@
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![Version](https://badge.fury.io/gh/08-k%2Fbrew.svg)](https://badge.fury.io/gh/08-k%2Fbrew)
+[![GitHub version](https://badge.fury.io/gh/08-k%2Fbrew.svg)](https://badge.fury.io/gh/08-k%2Fbrew)
 [![GitHub Release](https://img.shields.io/github/release/08-k/brew.svg?style=flat)]() 
 # The BREW stack
 BREW has the goal of creating a simple, yet scalable entry point for fullstack JavaScript applications using the react framework.
