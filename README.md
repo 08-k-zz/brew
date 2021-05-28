@@ -9,9 +9,9 @@ This is a project built from Open Source parts that built up our framework from 
 * **E**xpress - web framework - a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications
 * **W**ebpack - a module bundler - used for generating a minimal amount of files that run your app
 ## Stats
+[![Travis CI](https://travis-ci.com/08-k/brew.svg?branch=latest)](https://travis-ci.com/08-k/brew)
 [![Dependecy Status](https://david-dm.org/08-k/brew.svg)](https://david-dm.org/08-k/brew)  
 [![devDependencies Status](https://david-dm.org/08-k/brew/dev-status.svg)](https://david-dm.org/08-k/brew?type=dev)  
-[![Travis CI](https://travis-ci.com/08-k/brew.svg?branch=latest)](https://travis-ci.com/08-k/brew)
 ## Requirements
 * git - [Installation](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/)
 * node.js - [Download](https://nodejs.org/en/download/)
