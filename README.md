@@ -3,9 +3,8 @@
 [![GitHub Release](https://img.shields.io/github/release/08-k/brew.svg?style=flat)]() 
 #
 [![Dependecy Status](https://david-dm.org/08-k/brew.svg)](https://david-dm.org/08-k/brew)  
-[![Travis CI](https://travis-ci.com/08-k/brew.svg?branch=latest)](https://travis-ci.com/08-k/brew)
-#
 [![devDependencies Status](https://david-dm.org/08-k/brew/dev-status.svg)](https://david-dm.org/08-k/brew?type=dev)  
+[![Travis CI](https://travis-ci.com/08-k/brew.svg?branch=latest)](https://travis-ci.com/08-k/brew)
 # The BREW stack
 BREW has the goal of creating a simple, yet scalable entry point for fullstack JavaScript applications using the react framework.
 This is a project built from Open Source parts that built up our framework from the server to the browser.
