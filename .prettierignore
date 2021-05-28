@@ -1,3 +1,9 @@
+# Dependencies
 node_modules
+
+# React distribution
+dist
+
+# Test results
 coverage
 
