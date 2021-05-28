@@ -12,17 +12,16 @@ const Container = styled.div`
 `;
 
 export default function Home() {
-  useEffect(() => {
-    axios.get('/api/home')
-      .then(res => setState(res.data))
-  }, [])
+  const [state, setState] = useState('');
 
-  const [state, setState] = useState('')
+  useEffect(() => {
+    axios.get('/api/home').then((res) => setState(res.data));
+  }, []);
 
   return (
     <Container>
       <h2>Home</h2>
       {state}
     </Container>
-  )
+  );
 }

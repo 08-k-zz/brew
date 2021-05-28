@@ -10,7 +10,6 @@ const morgan = require('./config/morgan');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
 
-
 const app = express();
 const DIST_DIR = path.join(__dirname, '../dist');
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
@@ -21,24 +20,24 @@ if (config.env !== 'test') {
 }
 app.use(express.static(DIST_DIR));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.sendFile(HTML_FILE);
-})
-app.get('/about', function(req, res) {
+});
+app.get('/about', function (req, res) {
   res.sendFile(HTML_FILE);
-})
-app.get('/dashboard', function(req, res) {
+});
+app.get('/dashboard', function (req, res) {
   res.sendFile(HTML_FILE);
-})
-app.get('/api/home', function(req, res) {
-  res.json("Hello World!");
-})
-app.get('/api/about', function(req, res) {
-  res.json("Hello World!");
-})
-app.get('/api/dashboard', function(req, res) {
-  res.json("Hello World!");
-})
+});
+app.get('/api/home', function (req, res) {
+  res.json('Hello World!');
+});
+app.get('/api/about', function (req, res) {
+  res.json('Hello World!');
+});
+app.get('/api/dashboard', function (req, res) {
+  res.json('Hello World!');
+});
 
 app.use(helmet());
 

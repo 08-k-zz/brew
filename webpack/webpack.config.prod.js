@@ -2,12 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
 
-module.exports = require('./webpack.base.babel')({
+module.exports = require('./webpack.common')({
   mode: 'production',
-  entry: [
-    require.resolve('react-app-polyfill/ie11'),
-    path.join(process.cwd(), 'app/app.js'),
-  ],
+  entry: [require.resolve('react-app-polyfill/ie11'), path.join(process.cwd(), 'app/app.js')],
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js',
@@ -26,9 +23,7 @@ module.exports = require('./webpack.base.babel')({
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name(module) {
-            const packageName = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/,
-            )[1];
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
             return `npm.${packageName.replace('@', '')}`;
           },
         },
@@ -59,7 +54,6 @@ module.exports = require('./webpack.base.babel')({
     }),
   ],
   performance: {
-    assetFilter: assetFilename =>
-      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
+    assetFilter: (assetFilename) => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
 });

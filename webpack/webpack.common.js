@@ -1,16 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = options => ({
+module.exports = (options) => ({
   mode: options.mode,
   entry: options.entry,
-  output: Object.assign(
-    {
-      path: path.resolve(process.cwd(), 'dist'),
-      publicPath: '/',
-    },
-    options.output,
-  ),
+  output: {
+    path: path.resolve(process.cwd(), 'dist'),
+    publicPath: '/',
+    ...options.output,
+  },
   module: {
     rules: [
       {
@@ -34,8 +32,8 @@ module.exports = options => ({
         test: /\.(ico)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
-        }
+          name: '[name].[ext]',
+        },
       },
       {
         test: /\.svg$/,

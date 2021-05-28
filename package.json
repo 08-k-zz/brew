@@ -34,6 +34,8 @@
     "jest"
   ],
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "babel-preset-react": "^6.24.1",
     "compression": "^1.7.4",
@@ -54,16 +56,15 @@
     "serve-favicon": "^2.5.0",
     "styled-components": "^5.3.0",
     "web-vitals": "^1.1.2",
+    "webpack": "^5.38.1",
     "webpack-hot-middleware": "^2.25.0",
     "winston": "^3.2.1",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
-    "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "circular-dependency-plugin": "^5.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
@@ -99,7 +100,6 @@
     "stylelint-config-standard": "^22.0.0",
     "stylelint-webpack-plugin": "^2.1.1",
     "svg-url-loader": "^7.1.1",
-    "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
   }
 }
