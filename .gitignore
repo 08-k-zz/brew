@@ -4,7 +4,8 @@ node_modules
 # React distribution
 dist
 
-# Error logs
+# Auto-generated files
+yarn.lock
 yarn-error.log
 
 # Coverage
