@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -18,6 +19,17 @@ const Container = styled.div`
 `;
 
 export default function App() {
+  const socket = new WebSocket(`ws://localhost:4040`);
+
+  function handleWs(e) {
+    e.preventDefault();
+    socket.send('Test');
+  }
+
+  socket.onmessage = ({ data }) => {
+    console.info(`Message from the server: ${data}`);
+  };
+
   return (
     <Container>
       <Router>
@@ -33,6 +45,8 @@ export default function App() {
               <Link to="/dashboard">Dashboard</Link>
             </li>
           </ul>
+          <hr />
+          <button onClick={handleWs}>Send Socket Message</button>
           <hr />
           <Switch>
             <Route exact path="/">

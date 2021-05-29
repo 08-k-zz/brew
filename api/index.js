@@ -1,9 +1,22 @@
+const http = require('http');
+const WebSocket = require('ws');
+
 const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
 
-const server = app.listen(config.port, () => {
-  logger.info(`Listening to port ${config.port}`);
+const server = http.createServer(app);
+
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', (socket) => {
+  socket.on('message', (message) => {
+    logger.info(`Message: ${message}`);
+  });
+});
+
+server.listen(config.port, () => {
+  logger.info(`Listening on port ${config.port}`);
 });
 
 const exitHandler = () => {
