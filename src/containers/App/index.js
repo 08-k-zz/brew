@@ -19,17 +19,6 @@ const Container = styled.div`
 `;
 
 export default function App() {
-  const socket = new WebSocket(`ws://localhost:4040`);
-
-  function handleWs(e) {
-    e.preventDefault();
-    socket.send('Test');
-  }
-
-  socket.onmessage = ({ data }) => {
-    console.info(`Message from the server: ${data}`);
-  };
-
   return (
     <Container>
       <Router>
@@ -45,8 +34,6 @@ export default function App() {
               <Link to="/dashboard">Dashboard</Link>
             </li>
           </ul>
-          <hr />
-          <button onClick={handleWs}>Send Socket Message</button>
           <hr />
           <Switch>
             <Route exact path="/">
