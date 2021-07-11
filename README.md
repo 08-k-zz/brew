@@ -34,8 +34,7 @@ yarn && yarn dev #for development
 ---
 
 * BREW by Koji
-* The BREW name was inspired by Linnovate's "MEAN"
-[Linnovate's "MEAN"](https://github.com/linnovate/mean)
+* The "BREW" name was inspired by [Linnovate's "MEAN"](https://github.com/linnovate/mean)
 
 Copyright © 2021 Koji
 
